@@ -22,28 +22,29 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   }
 
   Future<void> _onLoad(
-    LoadTransactions event,
-    Emitter<TransactionState> emit,
-  ) async {
+      LoadTransactions event,
+      Emitter<TransactionState> emit,
+      ) async {
     emit(TransactionLoading());
-    try {
-      final transactions = await getTransactions.call();
-      emit(TransactionLoaded(transactions as List<TransactionEntity>));
-    } catch (e) {
-      emit(TransactionError(e.toString()));
-    }
+
+    final result = await getTransactions();
+
+    result.fold(
+          (error) => emit(TransactionError(error)),
+          (transactions) => emit(TransactionLoaded(transactions)),
+    );
   }
 
   Future<void> _onAdd(
-    AddNewTransaction event,
-    Emitter<TransactionState> emit,
-  ) async {
-    try {
-      await addTransaction.call(event.transaction);
-      add(LoadTransactions()); // Refresh list
-    } catch (e) {
-      emit(TransactionError(e.toString()));
-    }
+      AddNewTransaction event,
+      Emitter<TransactionState> emit,
+      ) async {
+    final result = await addTransaction(event.transaction);
+
+    result.fold(
+          (error) => emit(TransactionError(error.toString())), // Handle failure
+          (_) => add(LoadTransactions()), // On success, refresh list
+    );
   }
 
   Future<void> _onSync(

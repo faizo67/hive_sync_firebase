@@ -7,6 +7,8 @@ import 'package:hive_sync_firebase/presentation/bloc/transaction_bloc.dart';
 import 'package:hive_sync_firebase/presentation/bloc/transaction_event.dart';
 import 'package:hive_sync_firebase/presentation/bloc/transaction_state.dart';
 
+import '../widgets/custom_product_card.dart';
+
 class TransactionPage extends StatelessWidget {
   const TransactionPage({super.key});
 
@@ -36,10 +38,7 @@ class TransactionPage extends StatelessWidget {
               itemCount: state.transactions.length,
               itemBuilder: (context, index) {
                 final t = state.transactions[index];
-                return ListTile(
-                  title: Text(t.note),
-                  subtitle: Text("${t.amount} • ${t.date.toLocal()}"),
-                );
+                return customProductCard(t);
               },
             );
           } else if (state is TransactionError) {

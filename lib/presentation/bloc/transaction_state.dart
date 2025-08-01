@@ -8,7 +8,6 @@ class TransactionLoading extends TransactionState {}
 
 class TransactionLoaded extends TransactionState {
   final List<TransactionEntity> transactions;
-
   TransactionLoaded(this.transactions);
 }
 
