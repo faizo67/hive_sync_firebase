@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"hivesyncfirebas","appId":"1:784314945031:android:ab75724fdaaa29e68624a2","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"hivesyncfirebas","configurations":{"android":"1:784314945031:android:ab75724fdaaa29e68624a2","ios":"1:784314945031:ios:0cf69232c2d69d7f8624a2"}}}}}}
