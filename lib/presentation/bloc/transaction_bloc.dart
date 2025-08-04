@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_sync_firebase/core/services/native_widget_service.dart';
-import 'package:hive_sync_firebase/domain/entities/transaction_entity.dart';
 import 'package:hive_sync_firebase/domain/usecases/add_transaction.dart';
 import 'package:hive_sync_firebase/domain/usecases/get_transactions.dart';
 import 'package:hive_sync_firebase/domain/usecases/sync_transactions.dart';
